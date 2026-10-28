@@ -23,13 +23,15 @@ dist.mkdir(exist_ok=True)
 with tempfile.TemporaryDirectory() as temp:
     folder = Path(temp) / name
     folder.mkdir()
-    for source in [binary, root / "LICENSE", root / "README.md", root / "CHANGELOG.md"]:
+    for source in [binary, root / "LICENSE", root / "README.md", root / "CHANGELOG.md", root / "CONTRIBUTING.md"]:
         shutil.copy2(source, folder / source.name)
+    shutil.copytree(root / "docs", folder / "docs")
     if extension:
         archive = dist / f"{name}.zip"
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as output:
-            for path in sorted(folder.iterdir()):
-                output.write(path, f"{name}/{path.name}")
+            for path in sorted(folder.rglob("*")):
+                if path.is_file():
+                    output.write(path, f"{name}/{path.relative_to(folder)}")
     else:
         archive = dist / f"{name}.tar.gz"
         with tarfile.open(archive, "w:gz") as output:

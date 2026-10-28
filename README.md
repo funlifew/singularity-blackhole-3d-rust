@@ -54,7 +54,7 @@ Get the latest desktop build from [GitHub Releases](https://github.com/funlifew/
 | macOS Apple Silicon | `aarch64-apple-darwin.tar.gz` |
 | macOS Intel | `x86_64-apple-darwin.tar.gz` |
 
-Each archive also includes the license, README, and changelog. `SHA256SUMS` is published with every release. Desktop builds require an OpenGL-capable graphics driver; Linux also requires X11. macOS builds use the OpenGL backend and are distributed as command-line executables.
+The table lists the automated build targets; available downloads are listed on each release page. Each archive also includes the license, README, and changelog. `SHA256SUMS` is published with every release. Desktop builds require an OpenGL-capable graphics driver; Linux also requires X11. macOS builds use the OpenGL backend and are distributed as command-line executables.
 
 ## Run from source
 
