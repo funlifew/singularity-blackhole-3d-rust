@@ -1,10 +1,21 @@
 [package]
 name = "singularity-rust"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
+description = "An interactive, GPU ray-traced black hole explorer built with Rust and Macroquad"
+license = "MIT"
+repository = "https://github.com/funlifew/singularity-blackhole-3d-rust"
+readme = "README.md"
+keywords = ["black-hole", "raytracing", "graphics", "simulation", "macroquad"]
+categories = ["graphics", "simulation"]
 
 [dependencies]
-macroquad = "=0.4.16"
+macroquad = { version = "=0.4.16", default-features = false }
 
 [profile.dev.package."*"]
 opt-level = 3
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
